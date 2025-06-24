@@ -1,1 +1,32 @@
-# LongRead-UBA-2025
+# 3rd generation sequencing: Scientific Meeting and Data analysis Workshop
+Facultad de Ciencias Exactas y Naturales, Universidad de Buenos Aires. July 15-17, 2025.  
+[Venue](https://maps.app.goo.gl/ikTWHjVvoqQ4A6c57): Pabellón ‘Cero más Infinito’, Ciudad Universitaria, Ciudad Autónoma de Buenos Aires, Argentina.  
+*Classroom for morning talks: 1402. Classroom for practical sessions: 1103*
+
+## Organizing Committee
+
+Liliana Dain  - iB3, Universidad de Buenos Aires - National Center of Medical Genetics (CNGM)-ANLIS  
+María Sol Ruiz - IQUIBICEN-CONICET-Universidad de Buenos Aires  
+Ezequiel Petrillo - IFIBYNE-CONICET-Universidad de Buenos Aires  
+Ianina Ferder - iB3, Universidad de Buenos Aires  
+Matías Blaustein  - iB3, Universidad de Buenos Aires  
+Laura Kamenetzky - iB3, Universidad de Buenos Aires  
+
+## Speakers
+María Verónica Arana - IFAB, Bariloche, Argentina  
+Rita Armitano - INEI-ANLIS-Carlos G. Malbran, Argentina  
+Liliana Dain - iB3, Universidad de Buenos Aires  
+Eva Figuerola  - iB3, Universidad de Buenos Aires 
+Laura Kamenetzky  - iB3, Universidad de Buenos Aires  
+Mie Monti - Center for Genomic Regulation (CRG)- Barcelona, España  
+Tomas Poklepovich Caride - ANLIS-Carlos G. Malbran, Argentina  
+Leandro Quadrana - Institute of Plant Sciences, Paris-Saclay University, France  
+Lucas Siervi - Elytron Biotech, Argentina  
+Mariana Viegas - Universidad de La Plata, Argentina  
+Jeremy Wang - University of North Carolina, Chapel Hill, USA  
+
+## Professors of practical classes 
+Jeremy Wang  - University of North Carolina, Chapel Hill, USA  
+Lucas Siervi - Elytron Biotech, Argentina  
+  
+  *Collaborators in practical classes:* Natalia Macchiaroli, Ines Sananez, Marina Ingravidi, Aldana Claps.
