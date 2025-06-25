@@ -33,3 +33,6 @@ Jeremy Wang  - University of North Carolina, Chapel Hill, USA
 Lucas Servi - Elytron Biotech, Argentina  
   
   *Collaborators in practical classes:* Natalia Macchiaroli, Ines Sananez, Marina Ingravidi, Aldana Claps.
+
+## Sponsors
+<img src="/Sponsors.png" width="700" />
