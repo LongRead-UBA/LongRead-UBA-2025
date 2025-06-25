@@ -24,12 +24,12 @@ Laura Kamenetzky  - iB3, Universidad de Buenos Aires
 Mie Monti - Center for Genomic Regulation (CRG)- Barcelona, España  
 Tomas Poklepovich Caride - ANLIS-Carlos G. Malbran, Argentina  
 Leandro Quadrana - Institute of Plant Sciences, Paris-Saclay University, France  
-Lucas Siervi - Elytron Biotech, Argentina  
+Lucas Servi - Elytron Biotech, Argentina  
 Mariana Viegas - Universidad de La Plata, Argentina  
 Jeremy Wang - University of North Carolina, Chapel Hill, USA  
 
 ## Professors of practical classes 
 Jeremy Wang  - University of North Carolina, Chapel Hill, USA  
-Lucas Siervi - Elytron Biotech, Argentina  
+Lucas Servi - Elytron Biotech, Argentina  
   
   *Collaborators in practical classes:* Natalia Macchiaroli, Ines Sananez, Marina Ingravidi, Aldana Claps.
