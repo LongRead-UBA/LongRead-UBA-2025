@@ -13,7 +13,9 @@ Ianina Ferder - iB3, Universidad de Buenos Aires
 Matías Blaustein  - iB3, Universidad de Buenos Aires  
 Laura Kamenetzky - iB3, Universidad de Buenos Aires  
 
-## Speakers
+## Speakers  
+*Detailed information about each speaker* [here.](https://docs.google.com/document/d/1D1ZOWntkykQHwnkHbCgdFSBbYB1Y4ZZJ1vMsJnu3_lM/edit?usp=sharing)  
+  
 María Verónica Arana - IFAB, Bariloche, Argentina  
 Rita Armitano - INEI-ANLIS-Carlos G. Malbran, Argentina  
 Liliana Dain - iB3, Universidad de Buenos Aires  
