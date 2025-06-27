@@ -34,5 +34,7 @@ Lucas Servi - Elytron Biotech, Argentina
   
   *Collaborators in practical classes:* Natalia Macchiaroli, Ines Sananez, Marina Ingravidi, Aldana Claps.
 
+## Programme
+Preliminary programme can be found [here.](https://docs.google.com/document/d/1BVYpyHIgWdQ2Z1-UtwkwpjJ7DfIuvpO755dphx-kf0U/edit?usp=sharing) 
 ## Sponsors
 <img src="/Sponsors.png" width="700" />
