@@ -37,5 +37,8 @@ Lucas Servi - Elytron Biotech, Argentina
 
 ## Programme
 Preliminary programme can be found [here.](https://docs.google.com/document/d/1BVYpyHIgWdQ2Z1-UtwkwpjJ7DfIuvpO755dphx-kf0U/edit?usp=sharing) 
+
+## Posters
+The programme of the poster sessions can be found [here.](https://github.com/LongRead-UBA/LongRead-UBA-2025/blob/main/flyer-posters-2025-v2.pdf)
 ## Sponsors
 <img src="/Sponsors.png" width="700" />
