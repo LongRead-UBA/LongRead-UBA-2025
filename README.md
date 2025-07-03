@@ -25,7 +25,7 @@ Mie Monti - Center for Genomic Regulation (CRG)- Barcelona, España
 Tomas Poklepovich Caride - ANLIS-Carlos G. Malbran, Argentina  
 Leandro Quadrana - Institute of Plant Sciences, Paris-Saclay University, France  
 Lucas Servi - Elytron Biotech, Argentina  
-Paula Tribelli - IQUIBICEN-CONICET-QB, Universidad de Buenos Aires
+Paula Tribelli - IQUIBICEN-CONICET-QB, Universidad de Buenos Aires  
 Mariana Viegas - Universidad de La Plata, Argentina  
 Jeremy Wang - University of North Carolina, Chapel Hill, USA  
 
