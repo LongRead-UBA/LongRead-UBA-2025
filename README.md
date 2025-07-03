@@ -19,7 +19,7 @@ Laura Kamenetzky - iB3, Universidad de Buenos Aires
 María Verónica Arana - IFAB, Bariloche, Argentina  
 Rita Armitano - INEI-ANLIS-Carlos G. Malbran, Argentina  
 Liliana Dain - iB3, Universidad de Buenos Aires  
-Eva Figuerola  - iB3, Universidad de Buenos Aires 
+Eva Figuerola  - iB3, Universidad de Buenos Aires   
 Laura Kamenetzky  - iB3, Universidad de Buenos Aires  
 Mie Monti - Center for Genomic Regulation (CRG)- Barcelona, España  
 Tomas Poklepovich Caride - ANLIS-Carlos G. Malbran, Argentina  
