@@ -40,5 +40,9 @@ Preliminary programme can be found [here.](https://docs.google.com/document/d/1B
 
 ## Posters
 The programme of the poster sessions can be found [here.](https://github.com/LongRead-UBA/LongRead-UBA-2025/blob/main/flyer-posters-2025-v2.pdf)
+
+## Social media
+You can contribute to the long-read sequencing community and share your experience during the workshop at @OnTschool94359  
+
 ## Sponsors
 <img src="/Sponsors.png" width="700" />
