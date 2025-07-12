@@ -45,4 +45,4 @@ The programme of the poster sessions can be found [here.](https://github.com/Lon
 You can contribute to the long-read sequencing community and share your experience during the workshop at @OnTschool94359  
 
 ## Sponsors
-<img src="/Sponsors.png" width="700" />
+<img src="/Sponsors.png" width="800" />
