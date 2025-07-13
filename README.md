@@ -17,8 +17,9 @@ Laura Kamenetzky - iB3, Universidad de Buenos Aires
 *Detailed information about each speaker* [here.](https://docs.google.com/document/d/1D1ZOWntkykQHwnkHbCgdFSBbYB1Y4ZZJ1vMsJnu3_lM/edit?usp=sharing)  
   
 María Verónica Arana - IFAB, Bariloche, Argentina  
-Rita Armitano - INEI-ANLIS-Carlos G. Malbran, Argentina  
-Liliana Dain - iB3, Universidad de Buenos Aires  
+Rita Armitano - INEI-ANLIS-Carlos G. Malbran, Argentina   
+Agustín Baricalla - IMIBIO-San Luis, UNSL, Argentina    
+Liliana Dain - iB3, Universidad de Buenos Aires -CENAGEM    
 Eva Figuerola  - iB3, Universidad de Buenos Aires   
 Laura Kamenetzky  - iB3, Universidad de Buenos Aires  
 Mie Monti - Center for Genomic Regulation (CRG)- Barcelona, España  
