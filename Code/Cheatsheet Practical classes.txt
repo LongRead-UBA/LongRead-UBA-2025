@@ -1,0 +1,328 @@
+Cheatsheet Practical classes
+
+Usuario PCs: Estudiante
+Carpeta donde están los datos: /home/Estudiante/Jornada-LRS/
+Carpeta donde están los datos de Jeremy: /home/Estudiante/Jornada-LRS/JeremyWANG
+
+Entornos disponibles en conda para usar: 
+env-LRS
+env-clair3
+env-deseq2
+
+Día 1: Genómica:
+Para NanoQC → conda activate env-LRS
+
+Correr todo desde el directorio: /home/Estudiante/Jornada-LRS/JeremyWANG/DNA
+
+Cambiar las rutas para que coincidan con donde están los archivos.
+Ej: en vez de ../data/DNA/20250522_PBE28753_SKES1_WGS_DNA.chr11_22.fastq.gz, solo 20250522_PBE28753_SKES1_WGS_DNA.chr11_22.fastq.gz 
+
+nanoQC -o SKES1_qc JeremyWANG/DNA/20250522_PBE28753_SKES1_WGS_DNA.chr11_22.fastq.gz
+
+Tarda 7.5min 
+
+Outputs: 
+PATH: /home/Estudiante/Jornada-LRS/SKES1_qc
+nanoQC.html  NanoQC.log
+
+#Para ver el HTML
+firefox nanoQC.html
+
+#Para ver el log (es la info de la corrida)
+less NanoQC.log
+
+Para Minimap2 →desde env-LRS
+
+#Hacemos subsetting del genoma de referencia.
+
+samtools faidx hg38.fa chr11 chr22 > chr11_22.fa
+
+minimap2 -t8 -ax lr:hq chr11_22.fa /home/Estudiante/Jornada-LRS/JeremyWANG/DNA/20250522_PBE28753_SKES1_WGS_DNA.chr11_22.fastq.gz > SKES1_hg38.sam
+>>> output:  12G SKES1_hg38.sam
+
+Tarda 20min a
+
+
+#a continuacion, convertir, ordenar e indexar el archivo sam a bam:
+# ~5 min
+samtools view -bS SKES1_hg38.sam | samtools sort -t8 -o SKES1_hg38.sorted.bam
+samtools index SKES1_hg38.sorted.bam
+
+
+sniffles --input SKES1_hg38.sorted.bam --vcf SKES1_sniffles.vcf --threads 8
+
+# 21m, 2GB
+conda init
+source ~/.bashrc
+conda activate env-clair3
+
+conda list | grep clair3
+# packages in environment at /opt/miniconda3/envs/env-clair3:
+clair3                    1.0.10           py39h46983ab_0    bioconda
+
+find $CONDA_PREFIX -name run_clair3.sh
+/opt/miniconda3/envs/env-clair3/bin/run_clair3.sh  #aca esta el .sh 
+
+
+# correr clair
+
+/opt/miniconda3/envs/env-clair3/bin/run_clair3.sh \
+  --bam_fn=SKES1_hg38.sorted.bam \
+  --ref_fn=/home/Estudiante/Jornada-LRS/JeremyWANG/DNA/hg38.fa \
+  --threads=8 \
+  --platform=ont \ 
+  --model_path=/opt/miniconda3/envs/env-clair3/bin/models/ont \
+  --output=SKES1_clair3
+
+Dia 1: Metagenómica
+
+conda activate env-LRS
+
+nanoQC -o Zymo_qc /home/Estudiante/Jornada-LRS/JeremyWANG/metagenomics/20250616_PBC42657_ZymoGutCommDNA_dorado-0.9.1.duplex_sup.fastq.gz
+
+k2 classify --db /home/Estudiante/Jornada-LRS/ --threads 8 --output k2.out --use-names --report k2.report /home/Estudiante/Jornada-LRS/JeremyWANG/metagenomics/20250616_PBC42657_ZymoGutCommDNA_dorado-0.9.1.duplex_sup.fastq.gz
+
+Dia 2: 
+Code/Day2_Transcriptomics_differential_expr/RNA_analysis.sh
+
+23 min 4GB output
+
+#Ir al directorio Jornada-LRS
+
+cd Jornada-LRS
+
+#Activar ambiente donde esta minimap2
+
+conda activate env-LRS
+
+#correr el siguiente script
+
+mkdir -p RNA_out
+for f in /home/Estudiante/Jornada-LRS/JeremyWANG/RNA/*.fastq.gz; do
+  fn=${f##*/}
+  prefix=${fn%%.fastq.gz}
+  echo
+  echo $prefix
+  minimap2 -t8 -cx map-ont /home/Estudiante/Jornada-LRS/Homo_sapiens.GRCh38.cdna.all.fa.gz $f > /home/Estudiante/Jornada-LRS/RNA_out/$prefix.paf
+  /opt/dir_minnow/minnow/minnow -r /home/Estudiante/Jornada-LRS/Homo_sapiens.GRCh38.cdna.all.fa.gz -p /home/Estudiante/Jornada-LRS/RNA_out/$prefix.paf -t 8 > /home/Estudiante/Jornada-LRS/RNA_out/$prefix.minnow.cts
+done
+
+Code/Day2_Transcriptomics_differential_expr/diff_abund.py
+
+#Ubicarse en Jornada-LRS/RNA_out
+
+cd Jornada-LRS/RNA_out
+
+#desactivar el ambiente (env-LRS)
+conda deactivate 
+
+#activar el ambiente donde vamos a instalar deseq2
+conda activate env-deseq2
+
+#instalar deseq2 para python
+pip install pydeseq2
+
+#chequear que se instaló
+pip show pydeseq2
+
+#descargar el script diff_abund2.py y el file metadata2.tsv a la compu (Descargas)
+
+#copiarlos dentro de la carpeta RNA_out (Carpeta personal>Jornadas-LRS>RNA_out)
+
+#volver a la terminal
+# ejecutar el diff_abund2.py (esta modificando la linea 63, en vez de varm tiene que decir var)
+por ejemplo, con nano abrir el .py, editar esa linea y guardarlo (para salir, usar ctrl+x y elegir guardar los cambios)
+
+python diff_abund2.py metadata2.tsv
+
+#Genera este output en la carpeta RNA_out
+
+genes_significativos.csv
+
+#Output en la terminal
+
+#Existe un google colab si hay problemas con la instalación de python
+
+
+
+### PARTE 2: Machine Learning
+#Ejecutar en la terminal, sin activar ningún entorno, desde el mismo directorio donde se encuentran los archivos .cst generados, el script .py y el archivo .tsv (o corregir las rutas en caso contrario):
+
+python3 RNA_classifier.py metadata2.tsv 
+
+>>> no genera ningún archivo output, solo imprime en la pantalla:
+El nombre del archivo de la muestra (samples[test_idx]["filename"])
+Su linaje real (samples[test_idx]["lineage"])
+Su subtipo real (samples[test_idx]["subtype"])
+El linaje predicho (pred_lineage[0])
+El subtipo predicho (pred_subtype[0])
+
+Dia 3:
+Transcriptómica
+Para descomprimir carpetas .tar.gz → tar -xvzf
+
+PARA CREAR LAS VARIABLES:modificar según la ubicación de los archivos
+
+FASTQ_DIR="/home/Estudiante/Descargas/fastq_files/"
+
+TRANSCRIPTOME_FA="/home/Estudiante/Descargas/ONT_RNA_workshop/Arabidopsis_references/transcriptome/full_transcriptome/AtRTDv2_1_QUASI.LS.fa"
+
+GENOME_FA="/home/Estudiante/Descargas/ONT_RNA_workshop/Arabidopsis_references/genome/full_genome/TAIR10_mod.fna"
+
+MINIMAP2_INDEX_TRANSCRIPTOME="/home/Estudiante/Descargas/ONT_RNA_workshop/Arabidopsis_references/transcriptome/full_transcriptome/minimap2_index_transcriptome"
+
+MINIMAP2_INDEX_GENOME="/home/Estudiante/Descargas/ONT_RNA_workshop/Arabidopsis_references/genome/minimap2_index_genome"
+
+BAM_DIR_TRANSCRIPTOME="/home/Estudiante/Descargas/ONT_RNA_workshop/3.1_Transcriptomics/mapping/minimap2/transcriptome"
+
+BAM_DIR_GENOME="/home/Estudiante/Descargas/ONT_RNA_workshop/3.1_Transcriptomics/mapping/minimap2/genome"
+
+SALMON_DIR="/home/Estudiante/Descargas/ONT_RNA_workshop/3.1_Transcriptomics/mapping/salmon"
+
+THREADS=8
+
+
+Entrar a  /Descargas/ONT_RNA_workshop/tools/salmon-latest_linux_x86_64/bin
+
+Y desde ahí colocar a salmon en el PATH así:
+
+export PATH=$HOME/Descargas/ONT_RNA_workshop/tools/salmon-latest_linux_x86_64/bin:$PATH
+
+Correr:
+
+for FASTQ_FILE in "$FASTQ_DIR"/*.fastq; do
+    FILENAME=$(basename "$FASTQ_FILE" .fastq)
+
+    # Transcriptome alignment
+    minimap2 -t $THREADS -a -x map-ont "$MINIMAP2_INDEX_TRANSCRIPTOME" "$FASTQ_FILE" | \
+    samtools view -Sb > "$BAM_DIR_TRANSCRIPTOME/$FILENAME.bam"
+
+    # Genome alignment
+    minimap2 -t $THREADS -a -x splice "$MINIMAP2_INDEX_GENOME" "$FASTQ_FILE" | \
+    samtools view -Sb > "$BAM_DIR_GENOME/$FILENAME.bam"
+
+    # Quantification with salmon
+    salmon quant --ont -p $THREADS \
+        -t "$TRANSCRIPTOME_FA" \
+        -l U \
+        -a "$BAM_DIR_TRANSCRIPTOME/$FILENAME.bam" \
+        -o "$SALMON_DIR/$FILENAME"
+done
+
+16 min 
+
+Entrar a python y correr:
+
+
+python
+Python 3.10.18 | packaged by conda-forge | (main, Jun  4 2025, 14:45:41) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os, sys
+
+>>> BASE_DIR = "/home/Estudiante/Descargas/"
+>>> FAST5_EXAMPLE = os.path.join(BASE_DIR, "ONT_RNA_workshop", "ont_raw_data", "RNA")
+>>> SALMON_DIR = os.path.join(BASE_DIR, "ONT_RNA_workshop", "3.1_Transcriptomics", "mapping", "salmon")
+>>> OUTPUT_DIR = os.path.join(BASE_DIR, "ONT_RNA_workshop", "3.1_Transcriptomics", "outputs")
+
+Fuera de python:
+pip install pod5 matplotlib
+
+Dentro de python:
+>>> import pod5
+>>> import itertools, matplotlib.pyplot as plt
+>>> import pprint
+
+Definimos funciones:
+>>> def describe_pod5(fpath, n_preview_fields=10):
+...     with pod5.Reader(fpath) as rdr:
+...         n_reads = rdr.num_reads
+...         print(f"\n📄  File : {fpath}")
+...         print(f"🧮  Total reads : {n_reads}")
+...         #
+...         first = next(rdr.reads())
+...         cols = [k for k in dir(first)
+...                 if not k.startswith("_")
+...                 and k != "signal"
+...                 and not callable(getattr(first, k))]
+...         #
+...         print("📑  Columns :", ", ".join(cols) if cols else "(schema unavailable)")
+...         first = next(rdr.reads())
+...         keys = [k for k in dir(first) if not k.startswith("_") and k != "signal"]
+...         preview = {}
+...         for k in keys[:n_preview_fields]:
+...             v = getattr(first, k)
+...             if hasattr(v, "__len__") and not isinstance(v, (str, bytes)):
+...                 preview[k] = f"<{type(v).__name__} len={len(v)}>"
+...             else:
+...                 preview[k] = v
+...         print("🔍  First read metadata preview:")
+...         pprint.pprint(preview, compact=True, sort_dicts=False)
+...         print("\n")
+... 
+>>> 
+>>> def load_first_reads(fpath, n=2):
+...     with pod5.Reader(fpath) as rdr:
+...         traces = [(str(r.read_id), r.signal)
+...                     for r in itertools.islice(rdr.reads(), n)]
+...     ylabel = "Signal (pA)"
+...     return traces, ylabel
+... 
+>>> def plot_squiggles(traces, ylabel):
+...     """
+...     Draw one subplot per trace where
+...         traces = [(read_id, signal), ...]
+...     """
+...     print("# Plotting The electric signal:\n")
+...     fig, axes = plt.subplots(len(traces), 1, figsize=(12, 3*len(traces)))
+...     if len(traces) == 1:                        # matplotlib quirk
+...         axes = [axes]
+...     for ax, (rid, sig) in zip(axes, traces):
+...         ax.plot(sig, lw=0.5)
+...         ax.set_title(f"Read: {rid}")
+...         ax.set_xlabel("Sample index")
+...         ax.set_ylabel(ylabel)
+...     plt.tight_layout()
+...     plt.show()
+
+Definimos variable FILE:
+>>> FILE = "/home/Estudiante/Descargas/ONT_RNA_workshop/ont_raw_data/sample_20reads.pod5"
+Y corremos las funciones que definimos antes!!!
+
+Salimos de python:
+pip install pandas
+
+Volvemos a python:
+
+import os, sys
+import pandas as pd 
+
+Seguimos (cuando vemos In [ ] → es que tenemos que trabajar en python, sino afuera)
+
+uploaded = "/home/Estudiante/Descargas/ONT_RNA_workshop/3.1_Transcriptomics/mapping/salmon/colab_quant_files/"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
